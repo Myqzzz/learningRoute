@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡模块-手风琴效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            width: 960px;
+            height: 300px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            overflow: hidden;
+        }
+        ul li{
+            list-style: none;
+            width: 160px;
+            height: 300px;
+            float: left;
+            transition: width 0.5s;
+        }
+        ul:hover li{
+            width: 100px;
+        }
+        ul li:hover{
+            width: 460px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+
+
+    <li style="background-color: #ccc;"></li>
+    <li style="background-color: #e5ce8a;"></li>
+    <li style="background-color: #eac123;"></li>
+    <li style="background-color: #a00;"></li>
+    <li style="background-color: #cc0;"></li>
+    <li style="background-color: #0cc;"></li>
+</ul>
+</body>
+</html>

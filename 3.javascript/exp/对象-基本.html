@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var obj = {
+        "age":30,
+        "name":"zhangsan",
+        "say":function(m){
+            console.log('hello' + m);
+            return '说完了';
+        }
+    };
+    //对象的成员（属性、方法）相关操作
+    //1.对象.成员名  获取成员值
+    console.log(obj.age);
+    console.log(obj.say);//打印函数
+    console.log(obj.say());//打印函数返回值
+    //2.对象.方法名()  调用对象的方法
+    obj.say(100);
+    //3.对象.成员名 = 成员值  设置对象的成员（修改、新增）
+    obj.age = 40;
+    console.log(obj.age);
+    //4.对象也可以使用 []语法   对象['成员名']   对象['成员名'] = 值
+    //注意 []中的成员名称，一定是个字符串格式
+    console.log( obj['age'] );
+    //如果[]中不是字符串格式，则会被解析为一个变量名，会尝试将变量的值取出来，作为对象的成员名称进行访问
+    // console.log( obj[age] ); //会报错  age变量未定义
+
+    //5.删除对象的成员
+    delete obj.age; // delete obj['age'];
+    console.log( obj.age, obj['age'] );
+</script>
+</body>
+</html>

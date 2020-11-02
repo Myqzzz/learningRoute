@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            background: #f00;
+            /* overflow:auto; */
+        }
+        .box div {
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+        .s1 {
+            background: pink;
+        }
+        .s2 {
+            background: #00f;
+        }
+        .s3 {
+            background: #ff0;
+        }
+        .laowang {
+            width: 350px;
+            height: 200px;
+            background: #0f0;
+        }
+        /* .clear{ 
+            clear:both;		
+        } */
+        /* 推荐方式：使用伪元素清除浮动 */
+        .box:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+
+<body>
+    <!-- 浮动元素撑不开父容器，box无法显示 -->
+    <!-- 1.固定宽高- -->
+    <!-- 2.元素后设置空标签清除浮动 -->
+    <!-- 3.overflow清除浮动 -->
+    <!-- 4.伪元素清除浮动 -->
+    <div class="box">
+        <div class="s1"></div>
+        <div class="s2"></div>
+        <div class="s3"></div>
+    </div>
+    <div class="clear"></div>
+    <!-- 清除浮动带来影响的空标签必须是一个块元素 -->
+    <div class="laowang"></div>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div2">2
+        <div id="div1">1
+            <a id="a" href="www.baidu.com">百度</a>
+        </div>
+    </div>
+</body>
+<script>
+    var d2 = document.getElementById('div2');
+    var d1 = document.getElementById('div1');
+    var a = document.getElementById('a');
+    d2.onclick = function (e) {
+        alert('d2');
+    }
+    d1.onclick = function (e) {
+        alert('d1');
+    }
+    a.onclick = function (e) {
+        //阻止事件传播
+        e.stopPropagation();
+        alert('a');
+        //阻止浏览器默认行为
+        // 写法1
+        e.preventDefault();
+        // 写法2
+        // return false;
+    }
+</script>
+
+</html>

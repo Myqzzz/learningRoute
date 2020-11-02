@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+            width: 500px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="cont">
+        <div>
+            <p>name:</p>
+            <p>我是评论内容</p>
+            <hr>
+        </div>
+    </div>
+
+    <div>
+        昵称:
+        <input type="text" value="" id="userName" /><br/><br/>
+        <textarea name="" id="tt" cols="103" rows="10"></textarea><br/>
+        <input type="button" value="评论一下" id="btn" /><br/>
+    </div>
+</body>
+<script>
+    var un = document.getElementById('userName');
+    var tt = document.getElementById('tt');
+
+    document.getElementById('btn').onclick = function(){
+        var d = document.createElement('div');
+        d.innerHTML = '<p>'+un.value+':</p>';
+        d.innerHTML += '<p>'+tt.value+'</p>';
+        d.innerHTML += '<hr>';
+        document.getElementById('cont').appendChild(d);
+        un.value = '';
+        tt.value = '';
+    }
+
+</script>
+
+</html>

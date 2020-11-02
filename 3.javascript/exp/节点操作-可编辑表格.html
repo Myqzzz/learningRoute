@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+            width: 500px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="添加一行" id="addrow">
+    <table>
+        <thead>
+            <tr>
+                <td>菜名</td>
+                <td>饭店</td>
+                <td>厨师</td>
+            </tr>
+        </thead>
+        <tbody id="tb"></tbody>
+    </table>
+</body>
+<script>
+    var tbs = document.getElementsByTagName('table')[0];
+    tbs.onclick = function (e) {
+        var clicks = e.target;
+        if (clicks.nodeName == 'TD') {
+            // var inp = document.createElement('input');
+            // inp.value = clicks.innerText;
+            // console.log(clicks.parentElement);
+            clicks.innerHTML = '<input value=' + clicks.innerText + '>';
+            tbs.getElementsByTagName('input')[0].onblur = function () {
+                clicks.innerHTML = this.value;
+            }
+        }
+    }
+
+    var addrow = document.getElementById('addrow');
+    addrow.onclick = function () {
+        var tr = document.createElement('tr');
+        for (var i = 0; i < 3; i++) {
+            tr.appendChild(document.createElement('td'));
+        }
+        document.getElementById('tb').appendChild(tr);
+    }
+
+</script>
+
+</html>

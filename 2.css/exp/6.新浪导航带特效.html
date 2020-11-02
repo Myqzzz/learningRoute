@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 40px;
+            border: 1px solid #ccc;
+            background: #f7f7f7;
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .box li{
+            float: left;
+            height: 40px;
+            line-height: 40px;
+            /* background: #ccc; */
+            /* border: 1px solid #000; */
+            padding: 0 12px;
+        }
+        .box li>a{
+            text-decoration: none;
+            color: black;
+        }
+        .box li:hover{
+            background: #fff;
+            border-top:2px solid #ff8400 ;
+            height: 38px;
+            line-height: 36px;
+        }
+        .box li:hover a{
+            color: #ff8400;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li><a href="#">图片</a></li>
+            <li><a href="#">专栏</a></li>
+            <li><a href="#">热点</a></li>
+        </ul>
+    </div>
+</body>
+</html>

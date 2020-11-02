@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            margin-top: 10px;
+            margin-left: 100px;
+            float: left;
+            border: 1px solid #ccc;
+            perspective: 100px;
+        }
+
+        .box > div {
+            text-align: center;
+            width: 150px;
+            height: 150px;
+            margin: 30px auto;
+            background-color: blue;
+            transition: all 1s;
+        }
+
+        .box:nth-child(1) div:hover {
+            transform: rotateX(360deg);
+        }
+
+        .box:nth-child(2) div:hover {
+            transform: rotateY(360deg);
+        }
+
+        .box:nth-child(3) div:hover {
+            transform: rotateZ(360deg);
+        }
+
+        .box:nth-child(4) div:hover {
+            transform: translateX(300px);
+        }
+
+        .box:nth-child(5) div:hover {
+            transform: translateY(300px);
+        }
+
+        .box:nth-child(6) div:hover {
+            transform: translateZ(50px);
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div>rotateX</div>
+</div>
+<div class="box">
+    <div>rotateY</div>
+</div>
+<div class="box">
+    <div>rotateZ</div>
+</div>
+<div class="box">
+    <div>translateX</div>
+</div>
+<div class="box">
+    <div>translateY</div>
+</div>
+<div class="box">
+    <div>translateZ</div>
+</div>
+</body>
+</html>

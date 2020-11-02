@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 150px;
+            border: 1px solid pink;
+            margin: 250px auto;
+            position: relative;
+        }
+
+        .box img {
+            width: 200px;
+            height: 150px;
+            position: absolute;
+            /*控制元素中心点*/
+            transform-origin: right top;
+            transition: 1s;
+        }
+
+        .box:hover img:first-child {
+            transform: rotateZ(60deg);
+        }
+
+        .box:hover img:nth-child(2) {
+            transform: rotateZ(120deg);
+        }
+
+        .box:hover img:nth-child(3) {
+            transform: rotateZ(180deg);
+        }
+
+        .box:hover img:nth-child(4) {
+            transform: rotateZ(240deg);
+        }
+
+
+        .box:hover img:nth-child(5) {
+            transform: rotateZ(300deg);
+        }
+
+        .box:hover img:nth-child(6) {
+            transform: rotateZ(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="images/5.jpg" alt="">
+        <img src="images/3.jpg" alt="">
+        <img src="images/4.jpg" alt="">
+        <img src="images/2.jpg" alt="">
+        <img src="images/6.jpg" alt="">
+        <img src="images/1.jpg" alt="">
+         
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #d{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="d">
+        <p id="p">sdf</p>
+    </div>
+</body>
+<script>
+    var p = document.getElementById('p');
+    // p.onclick = function (e) {
+    //     //当前事件是否会冒泡
+    //     console.log(e.bubbles);
+    //     //事件目前所处的节点
+    //     console.log(e.eventPhase);
+    //     //事件类型
+    //     console.log(e.type);
+    //     //事件发生的时间戳
+    //     console.log(e.timeStamp);
+    // }
+    var d = document.getElementById('d');
+    d.onclick = function (e) {
+        // console.log(e); //W3C标准浏览器
+        // console.log(window.event);//IE浏览器
+        // var evt = e||window.event;//兼容方式获取事件对象
+        //返回事件节点
+        console.log(e.currentTarget);
+        //返回触发节点
+        console.log(e.target);
+    }
+</script>
+
+</html>

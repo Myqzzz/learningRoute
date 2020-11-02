@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .stage{perspective: 800px;}
+        .container{width: 150px;height:150px;margin: 200px auto; position: relative;
+            transform-style: preserve-3d;height:200px;transition:5s;transform-origin: center center 75px;}
+        .container .side{position: absolute;width: 150px;height: 150px;border:2px solid #0033FF;text-align: center;line-height: 150px;}
+        .left{left:-152px;transform: rotateY(90deg);transform-origin: right;}
+        .right{left:152px;transform: rotateY(-90deg);transform-origin: left;}
+        .top{top:-152px;transform: rotateX(-90deg);transform-origin: bottom;}
+        .bottom{top:152px;transform: rotateX(90deg);transform-origin: top;}
+        .front{transform: translateZ(152px);z-index:2;}
+        .back{z-index:1;}
+        .container:hover{transform: rotateY(360deg)}
+    </style>
+</head>
+<body>
+    <div class="stage">
+        <div class="container">
+            <div class="side front">前</div>
+            <div class="side back">后</div>
+            <div class="side left">左</div>
+            <div class="side right">右</div>
+            <div class="side top">上</div>
+            <div class="side bottom">下</div>
+        </div>
+    </div>
+</body>
+</html>

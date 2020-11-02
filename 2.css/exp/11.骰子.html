@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: tomato;
+        }
+
+        .main {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 16%;
+            border: 1px solid #000;
+        }
+
+        .main div {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #000;
+        }
+
+        .one {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .two {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .three {
+            display: flex;
+            justify-content: space-around;
+            box-sizing: border-box;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+
+        .three .dot1 {
+            align-self: flex-start;
+        }
+
+        .three .dot2 {
+            align-self: center;
+        }
+
+        .three .dot3 {
+            align-self: flex-end;
+        }
+
+        .four {
+            display: flex;
+            justify-content: space-around;
+            align-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .four div {
+            margin: 0 20px;
+        }
+
+        .five{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            align-content: space-around;
+        }
+        .five div{
+            margin: 0 20px;
+        }
+        .five .dot3{
+            margin: 0 50px;
+        }
+
+        .six{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            align-content: space-around;
+        }
+        .six div{
+            margin: 0 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main one">
+        <div class=""></div>
+    </div>
+    <div class="main two">
+        <div class=""></div>
+        <div class=""></div>
+    </div>
+    <div class="main three">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+        <div class="dot3"></div>
+    </div>
+    <div class="main four">
+        <div class=""></div>
+        <div class=""></div>
+        <div class=""></div>
+        <div class=""></div>
+    </div>
+    <div class="main five">
+        <div class=""></div>
+        <div class=""></div>
+        <div class="dot3"></div>
+        <div class=""></div>
+        <div class=""></div>
+    </div>
+    <div class="main six">
+        <div class=""></div>
+        <div class=""></div>
+        <div class=""></div>
+        <div class=""></div>
+        <div class=""></div>
+        <div class=""></div>
+    </div>
+</body>
+
+</html>

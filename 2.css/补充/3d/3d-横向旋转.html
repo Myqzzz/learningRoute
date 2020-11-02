@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+#rotatey{
+	border: 1px solid #000000;
+	background:#F00;
+	margin: 10px;
+	opacity:2;
+}
+.animated_div{
+	width: 60px;
+	height: 40px;
+	color: #ffffff;
+	position: relative;
+	font-weight: bold;
+	padding: 20px 10px 0px 10px;
+	float: left;
+	margin: 20px;
+	margin-right: 50px;
+	border: 1px solid #888888;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font: 12px Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
+	vertical-align: middle;
+}
+</style>
+<title>无标题文档</title>
+</head>
+ 
+<body>
+<div onclick="rotateYDIV()" class="animated_div rotate" id="rotatey">3D旋转</div>
+<script>
+	<!--
+var x,y,n=0,ny=0,rotINT,rotYINT
+ 
+function rotateYDIV()
+{
+y=document.getElementById("rotatey")
+clearInterval(rotYINT)
+rotYINT=setInterval("startYRotate()",10)
+}
+function startRotate()
+{
+n=n+1
+x.style.transform="rotate(" + n + "deg)"
+x.style.webkitTransform="rotate(" + n + "deg)"
+x.style.OTransform="rotate(" + n + "deg)"
+x.style.MozTransform="rotate(" + n + "deg)"
+if (n==180 || n==360)
+	{
+	clearInterval(rotINT)
+	if (n==360){n=0}
+	}
+}
+function startYRotate()
+{
+ny=ny+1
+y.style.transform="rotateY(" + ny + "deg)"
+y.style.webkitTransform="rotateY(" + ny + "deg)"
+y.style.OTransform="rotateY(" + ny + "deg)"
+y.style.MozTransform="rotateY(" + ny + "deg)"
+if (ny==180 || ny>=360)
+	{
+	clearInterval(rotYINT)
+	if (ny>=360){ny=0}
+	}
+}
+
+ 
+</script>
+</body>

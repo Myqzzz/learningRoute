@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 100%;
+        }
+        .header{
+            height: 42px;
+            background:#fcfcfc;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-top: 3px solid #ff8500;
+            z-index: 1;
+        }
+        .nav{
+            width: 1000px;
+            height: 42px;
+            margin: 0 auto;
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav li{
+            display: inline-block;
+            height: 42px;
+            line-height: 42px;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        .nav li:hover{
+            background: #eeeeee;
+        }
+        .nav li>a{
+            text-decoration: none;
+            color: #666;
+        }
+        .nav li:hover a{
+            color: #ff8500;
+        }
+        .left{
+            float: left;
+        }
+        .right{
+            float: right;
+        }
+        .nav li{
+            float:left;
+        }
+        .content{
+            width: 1000px;
+            position: absolute;
+            top: 42px;
+            left: 50%;
+            margin-left: -500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header container">
+        <div class="nav">
+            <ul class="left">
+                <li><a href="#">设为首页</a></li>
+                <li><a href="#">手机新浪网</a></li>
+                <li><a href="#">移动客户端</a></li>
+            </ul>
+            <ul class="right">
+                <li><a href="#">登录</a></li>
+                <li><a href="#">微博</a></li>
+                <li><a href="#">博客</a></li>
+                <li><a href="#">邮箱</a></li>
+                <li><a href="#">网站导航</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+
+            <img src="./img/8-box.png" alt="img">
+        </div>
+    </div>
+</body>
+</html>

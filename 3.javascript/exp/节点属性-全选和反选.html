@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+            width: 500px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="th" />
+                </th>
+                <th>菜名</th>
+                <th>饭店</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>红烧肉</td>
+                <td>田老师</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>西红柿鸡蛋</td>
+                <td>田老师</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>油炸榴莲</td>
+                <td>田老师</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>清蒸助教</td>
+                <td>田老师</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    document.getElementById('th').onclick = function () {
+        var tb = document.getElementsByTagName('input');
+        if (this.checked == true) {
+            for (var i = 0; i < tb.length; i++) {
+                tb[i].checked = true;
+            }
+        } else {
+            for (var i = 0; i < tb.length; i++) {
+                tb[i].checked = false;
+            }
+        }
+
+    }
+    var t = document.getElementsByTagName('tbody')[0];
+    t.onmouseover = function (e) {
+        e.target.parentElement.style.background = '#F5F5F5';
+    }
+    t.onmouseout = function (e) {
+        e.target.parentElement.style.background = '#fff';
+    }
+</script>
+
+</html>

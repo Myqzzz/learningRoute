@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #bbb;
+            cursor: pointer;
+            /* 光标：小手 */
+        }
+
+        ol,
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ol {
+            width: 60px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            border-radius: 10px;
+            left: 50%;
+            bottom: 6%;
+            margin-left: -30px;
+        }
+
+        ol li {
+            border-radius: 50%;
+            height: 12px;
+            width: 12px;
+            background: #fff;
+            float: left;
+            margin: 4px;
+        }
+
+        .box>a {
+            width: 24px;
+            height: 36px;
+            background: tomato;
+            display: none;
+            position: absolute;
+            top: 50%;
+            margin-top: -18px;
+        }
+
+        .box>a.left {
+            background: url(./img/9-left.png);
+            left: 0;
+        }
+
+        .box>a.right {
+            background: url(./img/9-right.png);
+            right: 0;
+        }
+
+        .box:hover>a {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='box'>
+        <ol>
+            <li data='0'></li>
+            <li data='1'></li>
+            <li data='2'></li>
+        </ol>
+        <ul>
+            <li><img src="./img/9-banner1.jpg" alt=""></li>
+            <li><img src="./img/9-banner2.jpg" alt=""></li>
+            <li><img src="./img/9-banner3.jpg" alt=""></li>
+        </ul>
+        <a href="javascript:;" class="left"></a>
+        <a href="javascript:;" class="right"></a>
+    </div>
+</body>
+
+<script>
+    // 图片自动切换
+
+    // 1.通过节点操作切换图片
+    /* setInterval(function(){
+        var li = document.querySelectorAll('ul>li')[0];
+        console.log(li.parentElement.appendChild(li));//将第一个li放到ul的最后一个
+    },2000); */
+    // 2.通过css切换图片
+    /* var cnt = 0;
+    setInterval(() => {
+        var li = document.querySelectorAll('ul>li');
+        for(var i=0;i<li.length;i++){
+            // console.log(li[i]);
+            li[i].style.display = 'none';//隐藏图片
+        }
+        if(cnt == li.length){
+            cnt = 0;
+        }
+        li[cnt++].style.display = 'block';//显示图片
+    }, 2000); */
+
+    // 鼠标悬停切换图片
+    // var dot = document.querySelectorAll('ol>li');
+    // i丢失问题
+    // 1.let变量
+    // for(let i=0;i<dot.length;i++)
+    // 2.利用data获var取index
+    /* for(var i=0;i<dot.length;i++){
+        dot[i].onmouseover = function(){
+           //  console.log(i);// i === 3，i丢失
+            var li = document.querySelectorAll('ul>li');
+            var index = this.getAttribute('data');
+            for(var j=0;j<li.length;j++){
+                if(j==index){
+                    li[j].style.display = 'block';
+                    dot[j].style.background = '#ddd';
+                    // console.log(dot[j]);
+                }else{
+                    li[j].style.display = 'none';
+                    dot[j].style.background = '#fff';
+                }
+            }
+        }
+    } */
+    // 3.利用匿名函数自调用
+    /* for (var i = 0; i < dot.length; i++) {
+        (function (i) {
+            dot[i].onmouseover = function () {
+                //  console.log(i);// i === 3，i丢失
+                var li = document.querySelectorAll('ul>li');
+                for (var j = 0; j < li.length; j++) {
+                        li[j].style.display = 'none';
+                        dot[j].style.background = '#fff';
+                }
+                li[i].style.display='block';
+                dot[i].style.background='#ddd';
+            }
+        })(i);
+    } */
+</script>
+<script>
+    var dots = document.querySelectorAll('ol>li');
+    var imgs = document.querySelectorAll('ul>li');
+    // 根据数字，显示图片
+    function change(n) {
+        for (var i = 0; i < imgs.length; i++)
+            if (i == n) {
+                imgs[i].style.display = 'block';
+                dots[i].style.background = '#ddd';
+            } else {
+                imgs[i].style.display = 'none';
+                dots[i].style.background = '#fff';
+            }
+    }
+    var timer, num = 0;
+    function setTimer() {
+        timer = setInterval(function () {
+            num++;
+            if (num == imgs.length) {
+                num = 0;
+            }
+            change(num);
+        }, 1000);
+    }
+    setTimer();
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].onmouseover = function () {
+            // 悬停，清除定时器
+            clearInterval(timer);
+            change(i);
+            num = i;
+        }
+        // 鼠标离开白圈，重设定时器
+        dots[i].onmouseout = function () {
+            setTimer();
+        }
+    }
+</script>
+
+</html>

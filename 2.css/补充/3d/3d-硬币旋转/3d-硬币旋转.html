@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+</head>
+<body>
+	<style type="text/css">
+		div{
+			width:400px;
+			height:400px;
+		}
+		.front{
+			background:url(front.jpg);
+			z-index:2;
+			transform:translateZ(10px);
+		}
+		.behind{
+			background:url(behind.jpg);
+			transform:rotateY(180deg);
+		}
+		.box{
+			transition:all 1s ease;
+			position:relative;
+			transform-style:preserve-3d;
+			perspective:1000px;
+		}
+		.box:hover{
+			transform:rotateY(180deg);
+		}
+		.box div{
+			position:absolute;
+			left:0;
+			top:0;
+		}
+	</style>
+	<div class="box">
+		<div class="front"></div>
+		<div class="behind"></div>
+	</div>
+	
+</body>
+</html>

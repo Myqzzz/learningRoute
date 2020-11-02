@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+        float: left;
+        margin-right: 20px;
+        cursor: pointer;
+        border: 2px solid green;
+    }
+</style>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+    <script>
+        //根据标签名字获取所有的div
+        var divObjs = document.getElementsByTagName("div");
+        //循环遍历
+        for (var i = 0; i < divObjs.length; i++) {
+            //为每个div添加鼠标进入事件
+            divObjs[i].onmouseover = mouseoverHandle;
+            //为每个div添加鼠标离开事件
+            divObjs[i].onmouseout = mouseoutHandle;
+        }
+        function mouseoverHandle() {
+            this.style.border = "2px solid red";
+        }
+        function mouseoutHandle() {
+            //希望这个样式属性的值还原成默认的时候,值就是""空的字符串
+            this.style.border = "";
+        }
+    </script>
+</html>

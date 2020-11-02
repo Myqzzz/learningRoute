@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript" src="js/jquery.js"></script>
+</head>
+
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">表单</a></li>
+        </ul>
+    </div>
+    <div class="formbody">
+        <div class="formtitle"><span>商品相册</span></div>
+        <li style="border: 1px solid grey;margin-bottom: 20px;">
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="200">
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="200">
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="200">
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="200">
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="200">
+        </li>
+        <form action="{:U('addOk')}" method="post" enctype="multipart/form-data">
+            <ul class="forminfo">
+                <li>
+                    <label>商品图片[<a href="javascript:;" class="add">+</a>]</label>
+                    <input name="goods_pic[]" type="file" />
+                </li>
+                <li>
+                    <label>&nbsp;</label>
+                    <input name="" id="btnSubmit" type="button" class="btn" value="确认保存" />
+                </li>
+            </ul>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+$(function(){
+    $('#btnSubmit').on('click',function(){
+        $('form').submit();
+    });
+</script>
+</html>

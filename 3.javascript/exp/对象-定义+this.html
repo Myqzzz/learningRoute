@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /**
+     * 对象的定义方式
+     * 1.字面量或直接量语法
+     * 2.new Object();
+     * 3.new 自定义的构造函数()
+     */
+
+    //1.字面量或直接量语法
+    
+    var obj = {
+    	"name":"zhangsan",
+    	age:40,
+    	'say':function(){
+    		return 300;
+    	}
+    };
+    console.log( obj.name );
+    console.log( obj.say() );
+    console.log(typeof obj);
+   
+
+    //2.new Object();
+    // 实例化内置构造函数 得到 实例化对象---实例对象
+    
+    var obj1 = new Object();
+    // var obj1 = new Object;//均会分配空间，但是new Object不会初始化
+    console.log(obj1); //得到一个空对象
+    // var obj1 = {};
+    console.log(typeof obj1);
+   
+
+    //3. new 自定义的构造函数()
+    
+    function fn(){
+    }
+    var obj2 = new fn();
+    console.log(obj2, typeof obj2);
+   
+    /**
+     * 特点
+     * 1.构造函数被实例化时，内部的代码会被自动执行
+     * 2.定义构造函数，使用this设置属性和方法
+     * 3.构造函数中，this关键字指向实例化后的那个对象
+     * 4.执行代码时，是在哪个对象里面，this就指向谁
+     * 5.普通函数 this指向一个window对象（js内置）
+     */
+    //1.构造函数被实例化时，内部的代码会被自动执行
+    
+    function fn(){
+    	console.log(300);
+    }
+    var obj2 = new fn();
+   
+
+
+    // 2.定义构造函数，使用this设置属性和方法
+    //构造函数名称，通常首字母大写（习惯）
+   
+    function Fn(){
+    	//在构造函数内部，使用 this.成员名 = 成员值 方式
+    	this.age = 40;
+    	this.say = function(){
+    		return 'hello';
+    	}
+    }
+    var obj2 = new Fn();//实例化构造函数fn，得到对象
+    console.log(obj2, typeof obj2);
+    console.log( obj2.say() );
+   
+
+    //3.构造函数中，this关键字指向实例化后的那个对象
+    
+    function Fn(){
+        console.log(this, typeof this); //this的值，就是实例化后的那个对象
+        // this -> obj2
+        this.age = 40;
+        this.say = function(){
+            return 'hello';
+        }
+    }
+    var obj2 = new Fn();//实例化构造函数fn，得到对象
+    console.log(obj2, typeof obj2);
+   
+
+</script>
+</html>

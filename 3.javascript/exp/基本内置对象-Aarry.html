@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    console.log(Array.prototype);
+    //push  pop  slice  join  toString
+	
+	var arr = [2,3, 4, 5, 6, 7];
+    console.log(arr);
+	//向数组末尾加元素，返回数组长度
+	console.log( arr.push(8,9) ); //返回数组长度
+	console.log(arr);
+	//从数组末尾删除一个元素，返回被删除的元素
+	console.log(arr.pop());
+	console.log(arr);
+	//slice 从数组中提取指定多个值，第一个参数是起始下标，第二个参数是截止下标（不包含）
+	//返回新数组，对原数组没影响
+	console.log(arr.slice(3, 6));
+	console.log(arr);
+	//join 将数组中的值以指定字符拼接起来
+	console.log(arr.join('-'));
+	console.log(arr);
+	//toString 将数组中的元素以,拼接成字符串
+	console.log(arr.toString());
+	console.log(arr);
+
+</script>
+
+</html>
