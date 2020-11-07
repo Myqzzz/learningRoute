@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     *  改变函数中的this
+     *  1.apply(对象,[参数1,参数2]),调用函数
+     *  2.call(对象,参数1,参数2)，调用函数
+     *  3.bind(对象,参数1,参数2)，返回新函数，不会主要调用
+     */
+    function fn(m, n){
+        console.log(this, m, n);
+    }
+    fn(3,6);
+
+    //函数.apply()方法  函数.call()方法  函数.bind()方法
+    //函数.apply(对象,[参数1,参数2])方法
+    //改变函数内部的this指向，然后调用函数
+    var obj = {"age":30};
+    fn.apply(obj, [8, 9]);
+
+    //函数.call()方法
+    //函数.call(对象,参数1,参数2)方法
+    //改变函数内部的this指向，然后调用函数
+    fn.call(obj, 8, 9);
+
+    //函数.bind()方法
+    //函数.bind(对象,参数1,参数2)方法
+    //改变函数内部的this指向，然后返回新函数
+    fn.bind(obj, 8, 9);//默认不调用
+    fn.bind(obj, 8, 9)();//自调用
+    fn.bind(obj)(8,9);
+
+    //案例：apply方法应用：已知一个数组 求最大值
+    var arr = [3, 6, 5, 100];
+    // Math.max(3, 6, 5) 每一个值都得从数组取出来
+    // for循环遍历 判断  麻烦
+    console.log( Math.max.apply(null, arr) );
+</script>
+</body>
+</html>

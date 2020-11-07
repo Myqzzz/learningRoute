@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**
+     * 1.原型链继承
+     * 优点：子类对象 能够继承 父类对象以及父类对象的原型对象的成员（整个原型链上的成员）
+     * 缺点：破坏了原型链（将子类自身的constructor丢了）
+     */
+    //定义父类构造函数
+    function A(){
+        this.age = 10;
+    }
+    A.prototype.say = function(){
+        console.log(100);
+    }
+    //定义子类构造函数
+    function B(){
+
+    }
+    //设置子类构造函数的原型对象 = 父类构造函数的实例对象
+    B.prototype = new A();  //会将B的实例对象自己的constructor属性丢了
+    // B.prototype.constructor = B;
+
+    var b = new B();
+    console.log(b.age);
+    b.say();
+
+    console.log(b.constructor);//A()
+
+</script>
+<script type="text/javascript">
+    /**
+     * 2.冒充继承
+     * 优点：不会丢失子类对象的constructor属性
+     * 缺点：只能继承父类构造函数中设置的成员，不能继承父类原型对象上的成员
+     */
+	//父类构造函数
+	function A(){
+		this.age = 30;
+	}
+	A.prototype.say = function(){
+		console.log(320);
+	}
+	//子类构造函数
+	function B(){
+		//this 实例化后的 b
+		//使用子类this 去冒充 父类构造函数中的this， 并且直接调用父类构造函数
+		//父类中的成员都设置到了子类对象中
+		A.call(this);  // call  apply  bind 三选一
+		// var obj = this;
+		// A.call(obj);
+		// A.apply(this);
+		// A.bind(this)();
+	}
+	var b = new B();
+	console.log(b.age);
+	console.log(b.constructor);
+	b.say();//报错,不能继承父类的原生对象函数
+</script>
+<script type="text/javascript">
+    /**
+     * 3.Object.create(父对象)方法继承
+     * 创建一个新对象，并且指定其原型对象
+     * 特点：适用于继承一个现有的对象，但是没有直接定义的构造函数
+     */
+	var person = {"age":30};
+	var obj = Object.create(person);
+	console.log(obj);
+	console.log(obj.age);
+	// var obj = new Object(); // var obj = {};
+	// obj.__proto__ = person;
+</script>
+</body>
+</html>

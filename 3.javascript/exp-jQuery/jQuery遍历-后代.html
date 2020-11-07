@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/jquery-1.12.2.min.js"></script>
+    <style>
+        .descendants *
+        {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script>
+        /**
+         * children() - 被选元素的所有直接子元素
+         * find() - 返回被选元素的后代元素，一路向下直到最后一个后代
+         * notes:
+         * children - 可选参数来过滤子元素的搜索
+         * find - *返回所有后代
+         */
+        $(function () {
+            $("div").children().css({"color":"red","border":"2px solid red"});
+            // $("div").children("p.1").css({"color":"red","border":"2px solid red"});
+            // $("div").find("span").css({"color":"red","border":"2px solid red"});
+            // $("div").find("*").css({"color":"red","border":"2px solid red"});
+        });
+    </script>
+</head>
+<body>
+
+<div class="descendants" style="width:500px;">div (当前元素)
+    <p class="1">p (儿子元素)
+        <span>span (孙子元素)</span>
+    </p>
+    <p class="2">p (儿子元素)
+        <span>span (孙子元素)</span>
+    </p>
+</div>
+
+</body>
+</html>

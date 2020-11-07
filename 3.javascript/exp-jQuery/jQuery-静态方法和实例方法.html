@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>插件机制</title>
+</head>
+
+<body>
+	<script src="./js/jquery-1.12.2.min.js"></script>
+	<script type="text/javascript">
+		//扩展静态方法  $.方法名 = 函数
+		// function f1(a,b){
+		// 	return a+b;
+		// }
+
+		// $.add = f1;
+
+		$.add = function (a, b) {
+			return a + b;
+		}
+
+		console.log($.add(3, 6));
+
+		//实例方法 $.fn.方法名 = 函数
+		$.fn.mins = function (a, b) {
+			return a - b;
+		}
+
+		console.log($('body').mins(9, 6));
+
+		//批量扩展 实例方法
+		$.fn.extend({
+			f5: function () {
+				return 100;
+			},
+			f6: function () {
+				return 200;
+			}
+		});
+
+		console.log($('body').f5());
+		console.log($('body').f6());
+	</script>
+</body>
+
+</html>

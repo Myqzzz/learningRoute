@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>动画效果</title>
+	<style type="text/css">
+		img{width: 350px;height: 350px}
+	</style>
+</head>
+<body>
+<div>
+	<input type="button" id="show" value="显示">
+	<input type="button" id="hide" value="隐藏">
+	<input type="button" id="toggle" value="切换">
+	<br>
+	<input type="button" id="slideUp" value="滑入（上拉）">
+	<input type="button" id="slideDown" value="滑出（下拉）">
+	<input type="button" id="slideToggle" value="滑动切换">
+	<br>
+	<input type="button" id="fadeIn" value="淡入">
+	<input type="button" id="fadeOut" value="淡出">
+	<input type="button" id="fadeToggle" value="切换">
+	<input type="button" id="fadeTo" value="指定透明度">
+	<br>
+	<input type="button" id="animate" value="自定义">
+	<input type="button" id="stop" value="停止">
+	<input type="button" id="delay" value="延迟动画">
+</div>
+<div>
+	<img src="lz.jpg">
+	<img src="lz.jpg">
+	<img src="lz.jpg">
+	<img src="lz.jpg">
+	<img src="lz.jpg">
+	<img src="lz.jpg">
+</div>
+<script src="./js/jquery-1.12.2.min.js"></script>
+<!-- <script type="text/javascript">
+	$(function(){
+		//给btn绑定点击事件
+		//
+		//第一组：显示隐藏效果
+		$('#show').click(function(){
+			//以动画效果显示
+			$('img').show();
+			// $('img').show(2000);
+			// $('img').show(2000, function(){
+			// 	console.log('显示完成');
+			// });
+		});
+		$('#hide').click(function(){
+			//以动画效果隐藏
+			$('img').hide();
+			// $('img').hide(2000);
+		});
+		$('#toggle').click(function(){
+			//以动画效果切换显示和隐藏
+			$('img').toggle();
+			// $('img').toggle(2000);
+		});
+
+		//第二组：滑动效果
+		$('#slideUp').click(function(){
+			// $('img').slideUp();
+			$('img').slideUp('fast');
+			// $('img').slideUp(2000);
+		});
+		$('#slideDown').click(function(){
+			// $('img').slideDown(); //默认 normal   slow  fast
+			$('img').slideDown('slow'); //默认 normal   slow  fast
+			// $('img').slideDown(2000);
+		});
+		$('#slideToggle').click(function(){
+			$('img').slideToggle();
+			// $('img').slideToggle(2000);
+		});
+
+		//第三组：淡入淡出效果  针对透明度
+		$('#fadeIn').click(function(){
+			$('img').fadeIn(2000);
+		});
+		$('#fadeOut').click(function(){
+			$('img').fadeOut(2000);
+		});
+		$('#fadeToggle').click(function(){
+			$('img').fadeToggle(2000);
+		});
+		//淡入淡出到指定透明度  样式名：opacity
+		$('#fadeTo').click(function(){
+			$('img').fadeTo(2000, 0.8); //透明度  0-1之间  0全透明  1不透明
+		});
+	});
+</script> -->
+<script type="text/javascript">
+	$(function(){
+		//自定义动画
+		$('#animate').click(function(){
+			$('img').animate({
+				"width":"600px",
+				"height":"600px",
+				"opacity":"0.5",
+			}, 3000);
+		});
+
+		//停止动画 stop
+		$('#stop').click(function(){
+			$('img').stop();
+		});
+
+		//延迟动画  delay
+		$('#delay').click(function(){
+			//图片先2秒逐渐隐藏，等待2s,再以2s逐渐显示
+			$('img').hide(2000).delay(2000).show(2000);
+		});
+	});
+	
+</script>
+</body>
+</html>

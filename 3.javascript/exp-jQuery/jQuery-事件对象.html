@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>事件对象</title>
+	<script src="./js/jquery-1.12.2.min.js"></script>
+
+</head>
+
+<body>
+	<div style="width:500px;height:500px;background-color:gray;">
+		<input type="button" id="btn" value="点我">
+	</div>
+	<a href="http://www.itcast.cn">传智</a>
+	<script type="text/javascript">
+		$(function () {
+			//事件对象  阻止事件冒泡、阻止默认行为
+			$('#btn').click(function (evt) {
+				//不用考虑IE兼容性问题
+				// console.log(evt);
+				console.log('点到btn了');
+
+				//阻止事件冒泡
+				// evt.stopPropagation();
+				//阻止默认行为（a标签、submit按钮）
+				// evt.preventDefault();
+				//通用方法 return false; 阻止事件冒泡和默认行为
+				return false;
+			});
+
+			$('div').click(function () {
+				console.log('点到div了');
+			});
+
+			$('a').click(function (evt) {
+				alert('点到我了');
+				//阻止默认行为（a标签、submit按钮）
+				// evt.preventDefault();
+				return false;
+			});
+		});
+	</script>
+</body>
+
+</html>

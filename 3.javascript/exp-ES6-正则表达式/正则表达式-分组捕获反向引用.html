@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>分组捕获、反向引用</title>
+</head>
+<body>
+<script type="text/javascript">
+	var str = '1122 3434 5566 7879 9887';
+	//匹配连续四个数字，第一和第二数字相同，第三和第四数字相同
+	// var res = str.match(/\d{4}/g);
+	var res = str.match(/(\d)\1(\d)\2/g);  
+
+	// var res = str.match(/(\d)\1(\d)\2/g);
+	console.log(res);// [1122 , 5566]
+
+	//匹配连续四个数字，第一和第三数字相同，第二和第四数字相同
+	var res = str.match(/(\d)(\d)\1\2/g);
+	console.log(res); //[3434]
+
+	//匹配连续四个数字，第一和第三数字相同
+	var res = str.match(/(\d)\d\1\d/g);
+	console.log(res); //[3434 , 7879]
+
+	//匹配连续四个数字，第一和第二数字相同，第三和第四数字相同，并将相同的数字只保留一个
+	// var res = str.replace(/(\d)\1(\d)\2/g, 'aaaa');
+	var res = str.replace(/(\d)\1(\d)\2/g, '$1$2');
+	console.log(res);//12 3434 56 7879 9887
+
+	//禁止反向引用 (?:)
+	var str = '1122 3434 5566 7879 9887';
+	// var res = str.match(/(?:\d)(\d)\1\d/g);//["9887"]
+	var res = str.match(/(?:\d)(\d)\1\d/g);//["9887"] -> \1代表的是第2个(\d),第1个(\d)禁止反向引用
+	// var res = str.match(/(\d)(\d)\1\d/g);//["3434", "7879"]
+	console.log(res); //[9887]
+
+
+	var str = "你好，世界";
+	var res = str.match(/[\u4E00-\u9FA5]/g);
+	var res = str.match(/[\u4E00-\u9FA5]{2}/g);
+	console.log(res);//["你", "好", "世", "界"]
+
+
+	//解决结巴问题
+	var str = "今今今天晚晚晚晚晚晚上吃吃吃吃吃吃鸡";
+	//核心思路， 连续的重复的汉字，保留一个 （字符串替换）
+	var res = str.replace(/([\u4E00-\u9FA5])\1+/g, '$1');
+	console.log(res);
+</script>
+</body>
+</html>

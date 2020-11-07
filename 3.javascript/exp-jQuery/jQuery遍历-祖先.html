@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/jquery-1.12.2.min.js"></script>
+    <style>
+        .ancestors *
+        {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script>
+        /**
+         * parent() - 直接父元素
+         * parents() - 所有祖先，直到根节点
+         * parentsUntil() - 返回两个元素之间的所有祖先元素
+         *
+         * notes:
+         * parents - 参数可以进行过滤
+         * parentsUntil - 不包含这两个元素
+         */
+        $(function () {
+             $("span").parent().css({"color":"red","border":"2px solid red"});
+            // $("span").parents().css({"color":"red","border":"2px solid red"});
+            // $("span").parents("ul").css({"color":"red","border":"2px solid red"});
+            // $("span").parentsUntil("div").css({"color":"red","border":"2px solid red"});
+        });
+    </script>
+</head>
+<body>
+    <div class="ancestors">
+        <div style="width: 500px">div (曾祖父元素)
+            <ul> ul (祖父元素)
+                <ui> ui (父元素)
+                    <span>span</span>
+                </ui>
+            </ul>
+        </div>
+
+        <div style="width: 500px"> div(祖父元素)
+            <p>p (父元素)
+                <span>span</span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

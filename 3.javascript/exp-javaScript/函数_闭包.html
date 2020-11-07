@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>li1</li>
+    <li>li2</li>
+    <li>li3</li>
+    <li>li4</li>
+    <li>li5</li>
+</ul>
+<script>
+
+    /**
+     * 前提知识： 函数内部可以使用函数外部变量；函数外面不能使用函数内部变量
+     * 闭包：其实就是 一个内部函数，或者说 闭包是一个内部函数以及函数所处的作用域环境
+     * 闭包典型特征:两个函数嵌套,内部函数被外部函数返回了.
+     *
+     * 写法：
+     * 1.常规写法
+     * 2.闭包使用匿名函数用法
+     * 3.更彻底的匿名函数用法
+     */
+    //1.常规写法
+    // f1函数外面 调用f2函数，使用到了f1函数内部的变量，这种方式就是写了一个“闭包”
+    /* function f1(){
+         var num = 100;
+         function f2(){
+             console.log(num);
+         }
+         return f2;
+     }
+     var res = f1(); // res = f2;  将f2函数 返回到 f1外面
+     // console.log(res);
+     res();*/
+
+    // 2.闭包使用匿名函数用法
+    /*function f1(){
+    	var num = 200;
+    	return function(){
+    		console.log(num);
+    	};
+    }
+    var res = f1();
+    res();*/
+
+    // 3.更彻底的匿名函数用法
+    /*var res = (function(){
+    	var num = 300;
+    	return function(){
+    		console.log(num);
+    	};
+    })();
+    // res 就是内部的函数
+    res();*/
+
+    /**
+     * 特殊写法：函数本身所处的作用域
+     * 函数本身所处的作用域，取决于函数定义的位置，和函数调用的位置无关
+     */
+    //例子1
+    /*var num = 100;
+    var f = function () {
+        console.log(num);
+    };
+
+    function f1() {
+        var num = 200;
+        return f;
+    }
+    var res = f1(); // res 就是 f函数
+    res();*/
+
+    //例子2
+    /* var num = 100;
+     var f = function(){
+         console.log(num);
+     };
+     function f1(){
+         var num = 200;
+         f();
+     }
+     f1();//100*/
+</script>
+
+<script>
+    /**
+     * 循环绑定事件； 事件中i丢失问题
+     * 原因：事件函数，是在循环结束之后才出发，循环结束，全局变量i已经是5
+     * 事件函数中使用全局变量i，始终是5
+     * 解决办法 ： 使用闭包方法
+     */
+        // var lis = document.querySelectorAll('li');
+        // for(var i=0; i<lis.length; i++){
+        // 	lis[i].onclick = function(){
+        // 		//输出 我是第 几 个li标签
+        // 		console.log('我是第 ' + i + ' 个li标签');
+        // 	}
+        // }
+
+        //解决办法 ： 使用闭包方法
+    var lis = document.querySelectorAll('li');
+    for (var i = 0; i < lis.length; i++) {
+        //套一层匿名函数自调用，形成了一个闭包环境
+        //主要作用是形成一个局部作用域
+        (function (m) {
+            lis[m].onclick = function () {
+                //输出 我是第 几 个li标签
+                console.log('我是第 ' + m + ' 个li标签');
+            }
+        })(i);
+    }
+</script>
+
+<script>
+    /**
+     * 闭包作用
+     *  1.函数外部使用函数内部的变量（对外部函数来说）
+     *  2.函数内部的变量，常驻内存（数据始终保存在内存中，不会被销毁）
+     * 闭包缺点
+     *  由于内部数据不会被自动销毁，占用内存。所以一般不要使用太多闭包
+     */
+    /*function fn(){
+    	var num = 100;
+    	console.log(num);
+    	num++;
+    }
+    fn();//100
+    fn();//100*/
+    function f1(){
+        var num = 100;
+        return function(){
+            console.log(num);
+            num++;
+        };
+    }
+    var res = f1(); // res就是返回的那个函数
+    res(); // 100  num = 101
+    res(); // 101  num = 102
+    res(); // 102  num = 103
+</script>
+</body>
+</html>

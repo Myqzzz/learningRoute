@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     *  1.test方法
+     *      test方法检测目标字符串和正则表达式是否匹配
+     *      匹配true，不匹配false。
+     *  2.exec方法
+     *      exec方法执行一个正则匹配，只匹配一次
+     *      匹配返回一个数组类型的结果，匹配不到就返回null。
+     *  3.lastIndex属性
+     *      上一次匹配结束后的位置（目标字符串中的索引），即下一次匹配开始的位置。
+     */
+    //1.test方法
+    /*var str = '1php1js22';
+    var pattern = /^[a-z]/;//以小写字母开头
+    var res = pattern.test(str);//匹配字符串是否以小写字母开头
+    console.log(res);//true
+    if(res){
+    	console.log('格式正确');
+    }else{
+    	console.log('格式错误');
+    }*/
+
+    //2.exec方法
+    /*// var str = 'php1js22';
+    // var pattern = /[a-z]/;//匹配小写字母字符串
+    var pattern = /[a-z]/g;//全局匹配小写字母字符串
+    var res1 = pattern.exec(str);
+    console.log(res1);//["p"] 只匹配一次，返回数组
+
+    //如果多次执行exec，则全局修饰符g会生效，每次匹配，是从上一次匹配结束的位置开始。
+    var res2 = pattern.exec(str);
+    console.log(res2);*/
+
+    //3.lastIndex属性  不加全局修饰符g，每次匹配结束被重置为0
+    //加了全局修饰符g， 每次匹配后 lastIndex 记录一个下标（下次匹配开始的位置）
+    /*var str = 'php1js22';
+    // var pattern = /[a-z]/;//匹配小写字母字符串
+    var pattern = /[a-z]/g;//全局匹配小写字母字符串
+    var res1 = pattern.exec(str);
+    console.log(res1);//["p"] 只匹配一次，返回数组
+
+    console.log(pattern.lastIndex);//1  下一次匹配开始的位置
+    var res2 = pattern.exec(str);
+    console.log(res2);//["h"] //从位置1开始匹配
+    console.log(pattern.lastIndex);*/
+
+</script>
+</body>
+</html>

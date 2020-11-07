@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * Object.prototype  是所有对象最顶层的原型对象
+     * 里面的成员属性成员方法，所有的对象都能够使用
+     * Object.prototype.hasOwnProperty()  判断一个对象有没有自己的成员（不是原型链上的）
+     * Object.prototype.isPrototypeOf() 判断一个对象是不是另一个对象的原型对象
+     * Object.getPrototypeOf() 获取一个对象的原型对象
+     */
+    // console.log(Object.prototype);
+    // //以数组构造函数Array为例
+    // console.log(Array.prototype);
+    // //数组构造函数的原型对象的原型对象，就是Object.prototype
+    // console.log(Array.prototype.__proto__ == Object.prototype);
+
+    //Object.prototype里面的方法
+    //1.Object.prototype.hasOwnProperty()  判断一个对象有没有自己的成员（不是原型链上的）
+    //使用场景：在对代码的效率要求特别高时，原型链的查找方式是非常浪费时间的
+    //禁止在原型链上查找成员，使用hasOwnProperty进行判断
+    function Person(){
+        this.age = 40;
+    }
+    Person.prototype.say = function(){
+        console.log('我今年' + this.age + '岁');
+    }
+    var obj = new Person();
+
+    // console.log(obj.hasOwnProperty('age'));
+    // console.log(obj.hasOwnProperty('say'));
+
+    //2.Object.prototype.isPrototypeOf() 判断一个对象是不是另一个对象的原型对象
+    // console.log( Object.prototype.isPrototypeOf(obj) );
+    var obj2 = {"age":40};
+    // console.log(obj2.isPrototypeOf(obj));
+
+    //注意  函数本身也是一个特殊的对象，有自己的成员属性和方法
+    //Object构造函数，就有很多自己的方法
+    //Object.getPrototypeOf() 获取一个对象的原型对象
+    /*console.log( Person.prototype );  //通过构造函数找
+    console.log( obj.__proto__ );//通过实例对象找   __proto__ ES6才规定必须有
+    console.log( Object.getPrototypeOf(obj) ); //兼容低版本浏览器  ES5语法
+*/
+    console.log(Object.prototype);//查看constructor属性下的成员
+    // console.log(Object);
+    /**
+     *  构造函数本身的方法，通常叫做静态方法，只能使用 函数名.方法名() 调用
+     *  实例对象以及原型对象的方法，只能使用 对象.方法名() 调用
+     *  静态方法，是不需要实例化对象就可以直接调用的。
+     *  比如 Math.random() 也是Math的静态方法
+     */
+</script>
+</body>
+</html>

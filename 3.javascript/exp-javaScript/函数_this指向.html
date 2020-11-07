@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" id="btn" value="按钮">
+<img src="1.jpg" onclick="f6(this);">
+<img src="1.jpg" onclick="this.src='2.jpg';">
+<script type="text/javascript">
+    /**
+     * 使用this的场景
+     * 1.普通函数中 window对象
+     * 2.事件函数中 this都是指向 触发事件的标签
+     * 3.构造函数中 this指向实例化后的那个对象
+     * 4.对象方法中 方法被那个对象调用的，this就是谁
+     * 5.html标签中  this指向标签本身
+     * */
+
+    // 1.普通函数中 window对象
+    /*function f1(){
+    	console.log(this); //window对象
+    }
+    f1();*/
+    // 2.事件函数中 this都是指向 触发事件的标签
+   /* document.getElementById('btn').onclick = function(){
+    	console.log(this);
+    }
+    function f2(){
+    	console.log(this);
+    }
+    document.getElementById('btn').onclick = f2;*/
+
+    // 3.构造函数中 this指向实例化后的那个对象
+    /*function Person(){
+    	this.age = 30;
+    	console.log(this);
+    }
+    var obj = new Person();*/
+
+    // 4.对象方法中 方法被那个对象调用的，this就是谁
+   /* var obj = {
+    	"age":30,
+    	"say":function(){
+    		console.log(this);
+    	}
+    };
+    obj.say(); // this是 obj
+
+    var obj2 = {
+    	"age":40,
+    	"say":obj.say
+    };
+    obj2.say();  //this 是obj2*/
+
+    // //将以上代码换个写法
+    /*function fn(){
+    	console.log(this);
+    }
+    var obj = {
+    	"age":30,
+    	"say":fn
+    };
+    var obj2 = {
+    	"age":40,
+    	"say":fn
+    };
+    obj.say();
+    obj2.say();*/
+
+    // 5.html标签中  this指向标签本身
+    /* function f6(obj){
+    	console.log(obj);
+    }*/
+
+
+    /**
+     * this的注意事项
+     * 1.链式调用（连贯调用），看方法调用的前面的那个值
+     * 2.函数嵌套，如果函数是普通调用，this都是window
+     * 3.对象方法中，还有嵌套的函数或者其他对象的方法，
+     *   在内层想要使用外层的this，需要重新声明一个变量，保存外层的this
+     */
+    //this的注意事项
+    //链式调用（连贯调用），看方法调用的前面的那个值
+     /*var obj = {
+    	"age":40,
+    	"son":{"age":20,"say":function(){console.log(this);}}
+    };
+    obj.son.say();*/
+
+    //函数嵌套，如果函数是普通调用，this都是window
+   /* function f7(){
+    	console.log(this);
+    	function f8(){
+    		console.log(this);
+    	}
+    	f8();
+    }
+    f7();
+*/
+
+    //对象方法中，还有嵌套的函数或者其他对象的方法，在内层想要使用外层的this，
+    //需要重新声明一个变量，保存外层的this
+    /*var obj1 = {
+        "age":30,
+        "say":function(){
+            console.log(this);
+            //如果要在obj2中，使用obj1的this
+            var that = this;
+            var obj2 = {
+                "walk":function(){
+                    console.log(this);
+                    //想要输出 obj1.age
+                    //如果不能直接使用obj1的话
+                    // console.log(obj1.age);
+                    console.log(that.age);
+                }
+            }
+            obj2.walk();
+        }
+    };
+    obj1.say();*/
+</script>
+</body>
+</html>

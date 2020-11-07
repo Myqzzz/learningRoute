@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /**
+         * 定义对象（构造函数 和 原型对象 混合定义方式）
+         * 1.将属性定义在构造函数中
+         * 2.将方法定义到原型对象中
+         */
+        function Person(n,a){
+            this.name = n;
+            this.age = a;
+        }
+        // 每一个构造函数，分配了一个公共的对象，存放构造函数实例化后的所有实例对象公共的成员
+        // 公共对象就叫做原型对象，可以通过构造函数的prototype属性取到
+        // console.log(Person.prototype);
+        Person.prototype.say = function(){
+            console.log('我叫' + this.name + '，我今年' + this.age + '岁');
+        }
+        Person.prototype.walk = function(m, n){
+            console.log('我走的很快');
+            // return m+n;
+        }
+        //多次实例化构造函数，得到多个对象
+        var person1 = new Person('张飞', 30);
+        var person2 = new Person('刘备', 40);
+        //Person构造函数的每一个实例对象，都可以直接使用对应的原型对象上的方法
+        person1.say();
+        person1.walk(1,2);
+        person2.say();
+
+        /**
+         * 构造函数、实例对象、原型对象的联系
+         * 1.构造函数、实例对象获得原型对象
+         * 2.通过原型对象，实例对象获得构造函数
+         */
+        console.log(person1);
+        //构造函数的prototype属性  存的是原型对象
+        console.log(Person.prototype);
+        //实例对象的__proto__属性  存的也是原型对象
+        console.log(person1.__proto__);
+
+        console.log(person1.__proto__ === Person.prototype);//true
+
+        //通过原型对象的constructor属性，取到构造函数
+        console.log(Person.prototype.constructor);
+        //实例对象也可以直接使用原型对象上的constructor
+        console.log(person1.constructor);
+        /**
+         * 两种原型对象添加方法的差异
+         * 1.向原型对象上添加一个方法
+         * 2.直接替换了原来的原型对象
+         */
+        //1.向原型对象上添加一个方法
+        Person.prototype.say = function(){
+        	console.log('我叫' + this.name + '，我今年' + this.age + '岁');
+        }
+        Person.prototype.walk = function(){
+        	console.log('我叫' + this.name + '，我今年' + this.age + '岁');
+        }
+        //2.直接替换了原来的原型对象
+        //产生的问题，原型对象本身的constructor属性丢失了，会取到Object函数
+        Person.prototype = {
+        	"constructor":Person, //需要手动指定构造函数
+        	"say":function(){
+        		console.log('我叫' + this.name + '，我今年' + this.age + '岁');
+        	},
+            "walk":function(){
+                console.log('我叫' + this.name + '，我今年' + this.age + '岁');
+            }
+        };
+        //字面量对象  有自己的构造函数，就是Object函数
+        var person1 = new Person('张三', 30);
+        console.log(person1.constructor);
+        console.log(Person.prototype.constructor);
+        console.log(Person.prototype);
+        console.log(Person.prototype.__proto__);
+        console.log(person1.__proto__.__proto__);
+        //找到一个对象的原型对象，还可以继续找原型对象的原型对象，直到找到最顶层（Object.prototype）为止
+    </script>
+
+    <script>
+        /**
+         * 原生链
+         *  查找一个对象的成员，先从自身找（包括自身构造函数中定义的成员），
+         *  找到，就直接使用，没找到，就继续在自身的原型对象上找，
+         *  找到，使用原型对象的成员，没找到，继续在原型对象的原型对象上找 。。。。
+         *  直到找到最顶层的原型对象（Object.prototype）
+         *  这种根据原型对象的链式结构，进行的链式查找方式，通常也叫做原型链（从查找对象的成员的方式角度）
+         */
+        function A(){
+            // this.age = 20;
+        }
+        function B(){
+            // this.age = 30
+        }
+
+        //实例化 构造函数A得到一个对象
+        var obj = new A();
+        //将A的实例对象，设置为 B的原型对象
+        B.prototype = obj;
+        //实例化 构造函数B
+        var obj2 = new B();
+        console.log(obj2);
+        console.log(obj2.__proto__);// obj
+        console.log(obj2.__proto__.__proto__);  // A.prototype 相当于是 new Object()
+        console.log(obj2.__proto__.__proto__.__proto__); //Object.prototype
+        console.log(obj2.age);
+
+
+    </script>
+</body>
+</html>

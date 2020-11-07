@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/jquery-1.12.2.min.js"></script>
+    <style>
+        .siblings *
+        {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+    </style>
+    <script>
+        /**
+         * siblings() - 返回被选元素的所有同胞元素
+         * next() - 返回被选元素的下一个同胞元素
+         * nextAll() - 返回被选元素的所有跟随的同胞元素
+         * nextUntil() - 返回介于两个给定参数之间的所有跟随的同胞元素
+         * prev()
+         * prevAll()
+         * prevUntil()
+         *
+         * notes:
+         * siblings - 可选参数来过滤对同胞元素的搜索
+         */
+        $(function () {
+            // $("h2").siblings("p").css({"color":"red","border":"2px solid red"});
+            // $("h2").next().css({"color":"red","border":"2px solid red"});
+            // $("h2").nextAll().css({"color":"red","border":"2px solid red"});
+            // $("h2").nextUntil("h5").css({"color":"red","border":"2px solid red"});
+            // $("h2").prev().css({"color":"red","border":"2px solid red"});
+            // $("h2").prevAll().css({"color":"red","border":"2px solid red"});
+            $("h2").prevUntil("p").css({"color":"red","border":"2px solid red"});
+
+        });
+    </script>
+
+</head>
+<body class="siblings">
+<div>div (父元素)
+    <p>p</p>
+    <span>span</span>
+    <h2>h2</h2>
+    <h3>h3</h3>
+    <h4>h4</h4>
+    <h5>h5</h5>
+    <h6>h6</h6>
+    <p>p</p>
+</div>
+
+</body>
+</html>

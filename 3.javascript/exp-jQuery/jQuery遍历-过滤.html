@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/jquery-1.12.2.min.js"></script>
+    <script>
+        /**
+         * first() - 返回被选元素的首个元素
+         * last() - 返回被选元素的最后一个元素
+         * eq() - 返回被选元素中带有指定索引号的元素
+         * filter() - 允许您规定一个标准，匹配的元素会被返回
+         * not() - 返回不匹配标准的所有元素
+         *
+         * notes:
+         * eq - 索引号从0开始
+         */
+        $(function () {
+            $("div p").first().css("background-color", "red");
+            $("div p").last().css("background-color","yellow");
+            $("p").eq(1).css("font-size","50px");
+            $("p").filter(".url").css("background-color","pink")
+            $("p").not(".url").css("font-weight","bold");
+        });
+    </script>
+</head>
+<body>
+<h1>欢迎访问我的主页</h1>
+<div>
+    <p>这是 div 中的一个段落。</p>
+</div>
+<div>
+    <p>这是另外一个 div 中的一个段落。</p>
+</div>
+<p class="url">这是一个段落。</p>
+</body>
+</html>

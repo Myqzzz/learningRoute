@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * 1.内存浪费
+     * 2.命名问题
+     */
+    //每次实例化都是重新定义一个function,浪费内存
+    function Person(n, a){
+        this.name = n;
+        this.age = a;
+        this.say = function(){
+            console.log('我叫' + this.name);
+        }
+    }
+    var person1 = new Person('张三', 30);
+    var person2 = new Person('李四', 40);
+    console.log(person1);
+    console.log(person2);
+
+    //1.解决内存浪费问题
+    //将构造函数中的方法，单独放在外面定义
+    var fn = function(){
+        console.log('我叫' + this.name);
+    };
+    function Person(n, a){
+        this.name = n;
+        this.age = a;
+        this.say = fn;
+    }
+    var person1 = new Person('张三', 30);
+    var person2 = new Person('李四', 40);
+    console.log(person1);
+    console.log(person2);
+
+    //2.解决命名问题
+    //方法非常多时，取名容易和一些全局变量冲突
+    //定义一个公共的字面量对象，存放人的所有对象公共的方法
+    var obj = {
+        "fn":function(){
+            console.log('我叫' + this.name);
+        },
+        "fn2":function(){
+            console.log('我走的很快');
+        }
+    };
+    //构造函数中，给每个人直接定义方法（从公共对象中取）
+    function Person(n, a){
+        this.name = n;
+        this.age = a;
+        this.say = obj.fn;
+        this.walk = obj.fn2;
+    }
+</script>
+</body>
+</html>

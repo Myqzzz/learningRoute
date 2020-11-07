@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    // 数组遍历
+    var arr = ['xiaoA','xiaoB','xiaoC'];
+    // 1.for
+    for(var i=0;i<arr.length;i++){
+        console.log(i,arr[i]);
+    }
+    // 2.for in
+    for(var i in arr){
+        console.log(i,arr[i]);
+    }
+    // 3.array.forEach
+    // param1 - 值
+    // param2 - 下标
+    // param3 - 数组本身
+    arr.forEach(function(val,key,arr){
+        console.log(val,key,arr);
+    })
+    // 4.for of(ES6) 值遍历
+    for(var v of arr){
+        console.log(v);
+    }
+</script>
+
+</html>

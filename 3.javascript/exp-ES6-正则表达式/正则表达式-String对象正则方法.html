@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * 1.stringObj.match(regex):字符串中检索匹配正则表达式regex的子串
+     *      匹配，返回包含匹配结果的一个数组；不匹配返回null
+     *   -不带全局修饰符g，则只匹配一次
+     *   -带全局修饰符g，则匹配所有结果
+     * 2.stringObj.replace(regex, replacement):检索匹配正则表达式regex的子串，并替换为指定的字符串replacement
+     *      返回替换之后的新字符串
+     *   -同上
+     * 3.stringObj.search(regex)：搜索符合正则表达式的结果
+     *      找到结果返回结果的起始位置，停止向后检索；如果没有匹配结果，返回-1.
+     *   -忽略全局标识符g
+     *
+     * 4.stringObj.split(regex)：
+     *      把一个字符串分割成字符串数组, 返回一个数组
+     */
+
+    //1.stringObj.match(regex)
+    /*var str = "1234@qq.com";
+    var res = str.match(/[@\.]/g); // .要加转义
+    console.log(res); //["@", "."]*/
+
+    //2.stringObj.replace(regex, replacement)
+
+    //3.stringObj.search(regex)
+    /*var str = "1234@qq.com";
+    var res = str.search(/[@\.]/); // .要加转义
+    console.log(res); //4
+    */
+
+    //4.stringObj.split(regex)
+    /*var str = "1234@qq.com";
+    var res = str.split(/[@\.]/);// .要加转义
+    console.log(res); //["1234", "qq", "com"]*/
+
+
+</script>
+</body>
+</html>

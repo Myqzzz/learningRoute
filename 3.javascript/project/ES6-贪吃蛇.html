@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<meta charset="utf-8">
+	<title>案例</title>
+	<style type="text/css">
+		body{margin:0;}
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+	//创建地图
+	class Map{
+		constructor(){
+			//属性
+			this.width = 600;
+			this.height = 400;
+			this.backgroundColor = 'gray';
+			this.ditu = null;
+		}
+		show(){
+			//创建div 
+			var div = document.createElement('div');
+			//设置样式
+			div.style.width = this.width + 'px';
+			div.style.height = this.height + 'px';
+			div.style.backgroundColor = this.backgroundColor;
+			//显示到页面中
+			document.body.appendChild(div);
+			//将地图的div 保存到地图对象的属性上,后续需要使用
+			this.ditu = div;
+		}
+	}
+
+	var map = new Map();
+	map.show();
+	// console.log(map.ditu);
+	
+	// 创建食物
+	class Food{
+		constructor(map){
+			//属性
+			this.width = 20;
+			this.height = 20;
+			this.backgroundColor = 'green';
+			this.x = 0;
+			this.y = 0;
+			this.position = 'absolute';
+			this.shiwu = null;
+		}
+		show(){
+			//加上判断，一个方法 兼具显示和刷新功能
+			if(!this.shiwu){
+				//div没有创建过
+				//创建div 
+				var div = document.createElement('div');
+				//设置样式
+				div.style.width = this.width + 'px';
+				div.style.height = this.height + 'px';
+				div.style.backgroundColor = this.backgroundColor;
+				div.style.position = 'absolute';
+				//显示到页面中
+				map.ditu.appendChild(div);
+				//将地图的div 保存到地图对象的属性上,后续需要使用
+				this.shiwu = div;
+			}
+			
+			//位置 生成随机的x y坐标
+			//横坐标x 0-30之间（不能包含30）的整数，乘以20倍(食物宽度)，就是到页面左边的距离 
+			//纵坐标y 0-20之间（不能包含20）的整数，乘以20倍（食物高度），就是到页面顶部的距离
+			this.x = Math.floor( Math.random() * (map.width/this.width) );
+			this.y = Math.floor( Math.random() * (map.height/this.height) );
+			//设置位置相关的样式
+			this.shiwu.style.left = this.x * this.width + 'px';
+			this.shiwu.style.top = this.y * this.height + 'px';	
+		}
+	}
+
+	var food = new Food(map);
+	food.show();
+
+	//创建蛇
+	class Snake{
+		constructor(){
+			this.body = [[5, 3, 'red', null], [4, 3, 'blue', null], [3, 3, 'blue', null]];
+			this.width = 20;
+			this.height = 20;
+			this.position = 'absolute';
+			this.direction = 'right';
+			this.canChange = false;//是否可以改变方向
+		}
+		show(){
+			//创建每节身体的div
+			for(var i=0; i<this.body.length; i++){
+				// this.body[i] //每节身体信息，是一个数组[5, 3, 'red']
+				if(!this.body[i][3]){
+					//以前没有创建过对应的div
+					var div = document.createElement('div');
+					//设置样式
+					div.style.width = this.width + 'px';
+					div.style.height = this.height + 'px';
+					div.style.position = this.position;
+					//显示到地图中
+					map.ditu.appendChild(div);
+					this.body[i][3] = div;
+				}
+				
+				this.body[i][3].style.backgroundColor = this.body[i][2];
+				this.body[i][3].style.left = this.body[i][0] * this.width + 'px';
+				this.body[i][3].style.top = this.body[i][1] * this.height + 'px';
+			
+			}
+			//显示完成，可以修改方向
+			this.canChange = true;
+		}
+		move(){
+			//循环，修改每节身体的坐标（先不管蛇头）
+			// for(var i=0; i<this.body.length; i++){
+			// 	 // 0 1 2
+			// 	// this.body[this.body.length-1-i]
+			// }
+			for(var i=this.body.length-1; i>0; i--){
+				// this.body[i]
+				this.body[i][0] = this.body[i-1][0];
+				this.body[i][1] = this.body[i-1][1];
+			}
+			//蛇头控制方向（用方向判断，蛇头的坐标怎么改）
+			if(this.direction == 'right'){
+				//蛇头横坐标+1
+				this.body[0][0] += 1;
+			}else if(this.direction == 'left'){
+				//蛇头横坐标-1
+				this.body[0][0] -= 1;
+			}else if(this.direction == 'down'){
+				//蛇头纵坐标+1
+				this.body[0][1] += 1;
+			}else if(this.direction == 'up'){
+				//蛇头纵坐标-1
+				this.body[0][1] -= 1;
+			}
+			//判断边界条件
+			if(this.body[0][0] < 0 || this.body[0][0] > 29 || this.body[0][1] < 0 || this.body[0][1] > 19){
+				//游戏结束 停止定时器
+				clearInterval(timer);
+				alert('game over');
+				return;
+			}
+			//判断 蛇头是否和其他的身体坐标重合
+			for(var i=1; i<this.body.length; i++){
+				if(this.body[0][0] == this.body[i][0] && this.body[0][1] == this.body[i][1]){
+					//蛇头和身体重合
+					////游戏结束 停止定时器
+					clearInterval(timer);
+					alert('game over');
+					return;
+				}
+			}
+			//重新显示
+			this.show();
+			//判断是否吃到食物  蛇头坐标和食物完全一样
+			if(this.body[0][0] == food.x && this.body[0][1] == food.y){
+				//吃到食物，将this.body 加长一节
+				this.body[this.body.length] = [0, 0, 'blue', null];
+				// this.body.push([0, 0, '', null]);
+				//食物刷新位置
+				food.show();
+				//吃到食物，让蛇加速
+				if(t > 150){
+					t -= 50;
+					setTimer();
+				}
+			}
+		}
+
+	}
+	
+	var snake = new Snake();
+	snake.show();
+
+	//让蛇自动走  设置定时器
+	var t = 500;
+	var timer;
+	function setTimer(){
+		//先停止之前的定时器
+		clearInterval(timer);
+		//重新设置定时器
+		timer = setInterval(function(){
+			snake.move();
+		}, t);
+	}
+	setTimer();
+	
+
+	//让蛇拐弯
+	//绑定键盘事件
+	window.onkeyup = function(e){
+		var evt = e || window.event;
+		if(!snake.canChange){
+			//不能改方向
+			return;
+		}
+		// console.log(evt);// 左 37 上38 右39 下40
+		if(e.keyCode == 37 && snake.direction != 'right'){
+			snake.direction = 'left';
+		}else if(e.keyCode == 38 && snake.direction != 'down'){
+			snake.direction = 'up';
+		}else if(e.keyCode == 39 && snake.direction != 'left'){
+			snake.direction = 'right';
+		}else if(e.keyCode == 40 && snake.direction != 'up'){
+			snake.direction = 'down';
+		}
+
+		snake.canChange = false;
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    //交换变量的值
+	// var a = 1, b = 2;
+	// //1.中间变量
+	// var c = a;  // c = 1
+	// a = b; //  a = 2
+	// b = c; // b = 1
+	//2.加减运算 不使用中间变量
+	// var a = 1, b = 2;
+	// a = a + b;  // a = 3   b = 2
+	// b = a - b; // a = 3;  b = 1
+	// a = a - b;  // a = 2;  b = 1
+	// 3.数组 不使用中间变量
+	// var a = 1, b = 2;
+	// [1 , 2]
+	// a = [a, b][1]; // [1, 2][1]   a=2
+	// b = [a, b][0]; // [2, 2][0]   b=2  //都是2
+	
+	// var a = 1, b = 2;
+	// [a,b=a]   //  [1, 1]  b=1
+	// [a,a=b]   //  [1, 2]  a=2
+	// 定义数组时同时给其中一个变量进行赋值 a=b;  定义数组后再通过数组给另外一个变量赋值
+	// b = [a, a=b][0];  // 最终一行代码解决 [1, 2] a=2  b=[1,2][0] = 1
+	// 4.对象 不使用中间变量
+	var a = 1, b = 2;
+	// 定义对象时同时给其中一个变量进行赋值 a=b;  定义对象后再通过对象的属性给另外一个变量赋值
+	b = {"attr1":a, "attr2":a=b}.attr1;
+	// b = {"attr1":a, "attr2":a=b}['attr1'];
+	// b = {a:a, b:a=b}.a; 难以阅读的形式  对象的属性名，可以不加引号，但还是普通字符串，不是变量
+
+</script>
+
+</html>

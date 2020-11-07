@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>事件机制</title>
+</head>
+<body>
+<div id="btns">
+	<input type="button" class="btn" value="点我1">
+	<input type="button" class="btn" value="点我2">
+</div>
+<script src="./js/jquery-1.12.2.min.js"></script>
+<!-- <script type="text/javascript">
+	$(function(){
+		//简单事件绑定（对未来元素不生效）
+		$('.btn').click(function(){
+			alert('你点到我啦');
+		});
+
+		//向div中增加一个input
+		// console.log( $('#btns')[0] );
+		// console.log( $('.btn')[0].cloneNode() );
+		
+		//注意：节点方式操作和 innerHTML 不同
+		//节点方式的操作，原来的标签没有被改变，事件还在
+		var input4 = $('.btn')[0].cloneNode();
+		input4.value = '点我4';
+		$('#btns')[0].appendChild( input4 );
+
+		//使用innerHTML 重新替换内容，会将事件丢失了
+		// $('#btns')[0].innerHTML += '<input type="button" class="btn" value="点我3">';
+
+		// 产生的问题：后来通过js向页面追加的元素，普通方式绑定的事件不生效
+	});
+</script> -->
+<!-- <script type="text/javascript">
+	$(function(){
+		//on方法绑定普通事件（对未来元素不生效）
+		$('.btn').on('click', function(){
+			alert('你点到我啦');
+		});
+
+		//on方法绑定委托事件（对未来元素生效）
+		//通过现有的祖先元素，给其后代元素绑定事件
+		//对未来元素（绑定事件时页面还没有的元素，后来通过js追加到页面的元素）生效
+		// $('#btns').on('click','.btn' ,function(){
+		// 	alert('你点到我啦');
+		// });
+
+		//向div中增加一个input
+		var input4 = $('.btn')[0].cloneNode();
+		input4.value = '点我4';
+		$('#btns')[0].appendChild( input4 );
+	});
+</script> -->
+<script type="text/javascript">
+	$(function(){
+		//以前绑定的事件
+		$('.btn').on('click', function(){
+			alert('你点到我啦');
+		});
+		//解绑事件 off方法
+		//在绑定事件之前，调用off方法，解绑以前的事件
+		$('.btn').off('click').on('click', function(){
+			alert('新的事件');
+		});
+
+		//使用代码触发事件
+		// $('.btn').click();
+		$('.btn').trigger('click');
+	});
+</script>
+</body>
+</html>
